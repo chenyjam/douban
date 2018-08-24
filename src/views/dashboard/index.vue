@@ -1,20 +1,36 @@
 <template>
-  <div class="dashboard-container">
-    <div class="dashboard-text">name:{{ name }}</div>
-    <div class="dashboard-text">roles:<span v-for="role in roles" :key="role">{{ role }}</span></div>
+  <div>
+    <el-row v-for="item in inTheatersList" :key="item.id">
+      <el-col :span="4"></el-col>
+    </el-row>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import { getInTheaters } from '@/api/dashboard'
 
 export default {
   name: 'Dashboard',
+  created () {
+    getInTheaters().then(response => {
+      const data = response.data;
+      
+    })
+  },
   computed: {
-    ...mapGetters([
-      'name',
-      'roles'
-    ])
+    // ...mapGetters([
+    //   'name',
+    //   'roles'
+    // ])
+    splitInTheatersList () {
+      return this.inTheatersList;
+    }
+  },
+  data () {
+    return {
+      inTheatersList: []
+    }
   }
 }
 </script>
