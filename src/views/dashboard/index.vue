@@ -42,7 +42,7 @@ export default {
   }
   &-text {
     font-size: 30px;
-    line-height: 4px;
+    line-height: 46px;
   }
 }
 </style>
